@@ -13,7 +13,7 @@ class Dosen extends Model
     protected $fillable=[
         'nama',
         'nip',
-        'jurusan',
+        'bidang_studi',
     ];
 
     protected $appends=[

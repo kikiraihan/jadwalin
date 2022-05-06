@@ -46,18 +46,34 @@
     <ul class="list-reset ">
 
         @foreach ([
-            ['route' => 'dashboard', 'title' => 'Dashboard','icon'=>'fas fa-home fa-fw'],
-            ['route' => 'pembimbingan', 'title' => 'Dosen','icon'=>'fas fa-chalkboard-teacher fa-fw'],
+            'main',
+            ['route' => 'dashboard', 'title' => 'Dashboard','icon'=>'fas fa-th-large fa-fw'],
+            ['route' => 'pembimbingan', 'title' => 'Dosen','icon'=>'fas fa-user-graduate fa-fw'],
             ['route' => 'mahasiswa', 'title' => 'Mahasiswa','icon'=>'fa fa-users fa-fw'],
-            ['route' => 'jurusan', 'title' => 'Jurusan','icon'=>'fa fa-envelope fa-fw'],
-            ['route' => 'matakuliah', 'title' => 'Matakuliah','icon'=>'fa fa-envelope fa-fw'],
+            ['route' => 'pengampu', 'title' => 'Pengampu','icon'=>'fa fa-chalkboard-teacher fa-fw'],
+            ['route' => 'slotjadwal', 'title' => 'Penjadwalan','icon'=>'fa fa-calendar fa-fw'],
+            '',
+            'master',
+            ['route' => 'matakuliah', 'title' => 'Matakuliah','icon'=>'fa fa-box fa-fw text-xs'],
+            ['route' => 'jurusan', 'title' => 'Jurusan','icon'=>'fa fa-box fa-fw text-xs'],
+            ['route' => 'ruangan', 'title' => 'Ruangan','icon'=>'fa fa-box fa-fw text-xs'],
+            ['route' => 'hari', 'title' => 'Hari','icon'=>'fa fa-box fa-fw text-xs'],
+            ['route' => 'slotjam', 'title' => 'Slot Jam','icon'=>'fa fa-box fa-fw text-xs'],
         ] as $item)
-            <li class="my-2 md:my-0">
-                <a href="{{ route($item['route']) }}" class="block py-1 md:py-3  align-middle text-gray-600 no-underline hover:text-green-400">
-                    <i class="{{$item['icon']}} {{request()->routeIs($item['route'])?'text-green-400':''}} "></i>
-                    <span class="w-full inline-block ml-3 pb-1 md:pb-0 text-sm">{{$item['title']}}</span>
-                </a>
-            </li>
+        @if (is_string($item))
+        <li class="my-2">
+            <div class="block py-1 md:py-4  align-middle text-gray-400 no-underline">
+                <span class="pb-1 md:pb-0 font-bold capitalize text-xs">{{$item}}</span>
+            </div>
+        </li>
+        @else
+        <li class="my-2 md:my-0">
+            <a href="{{ route($item['route']) }}" class="flex space-x-7 py-1 md:py-2.5 items-center text-gray-600 no-underline hover:text-green-400">
+                <i class="{{$item['icon']}} {{request()->routeIs($item['route'])?'text-green-400':''}} "></i>
+                <span class="pb-1 md:pb-0 text-sm">{{$item['title']}}</span>
+            </a>
+        </li>
+        @endif
         @endforeach
 
     </ul>

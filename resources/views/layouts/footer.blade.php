@@ -2,7 +2,7 @@
     <div class="md:flex items-center md:justify-between justify-center">
         <div class="w-full mx-auto text-center">
             <div class="text-sm text-gray-600 font-semibold py-1">
-                "Nothing in the world is as soft and yielding as water."
+                {{-- "Nothing in the world is as soft and yielding as water." --}}
                 Copyright © <span id="datetime">2021</span> Katili.dev
             </div>
         </div>

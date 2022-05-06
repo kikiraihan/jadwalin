@@ -25,7 +25,7 @@ class MahasiswaImport implements ToModel, WithHeadingRow, WithValidation
             $return[$value['nama']]=$value['id'];
         }
         $this->cariId=$return;
-        $this->semuaJurusan=jurusan::semuaNama();
+        $this->semuaJurusan=jurusan::semuaId();
     }
     
     public function model(array $row)
@@ -33,7 +33,7 @@ class MahasiswaImport implements ToModel, WithHeadingRow, WithValidation
         return new Mahasiswa([
             'nama'  =>$row['nama'],
             'nim'     =>$row['nim'],
-            'id_jurusan'=>$this->cariId[$row['jurusan']],
+            'id_jurusan'=>$row['id_jurusan'], //$this->cariId[$row['id_jurusan']],
         ]);
     }
 
@@ -49,7 +49,7 @@ class MahasiswaImport implements ToModel, WithHeadingRow, WithValidation
                 'numeric',
                 'unique:mahasiswas,nim',
             ],
-            'jurusan' => [
+            'id_jurusan' => [
                 'required',
                 Rule::in($this->semuaJurusan),
             ],

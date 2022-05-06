@@ -12,16 +12,24 @@ class Pengampu extends Model
     protected $fillable=[
         'id_dosen',
         'id_matakuliah',
-        'penanggung_jawab',
+        'penanggung_jawab',//boolean
+        'kelas',//A,B,C,D,E
     ];
 
+
+    // Parent
     public function dosen()
     {
         return $this->belongsTo(Dosen::class,'id_dosen','id');
     }
-
     public function matakuliah()
     {
         return $this->belongsTo(matakuliah::class,'id_matakuliah','id');
     }
+
+    // Child
+    public function slotJadwal(){
+        return $this->hasOne(slotjadwal::class,'id_pengampu','id');
+    }
+
 }

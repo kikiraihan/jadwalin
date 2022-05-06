@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Hari;
 use Illuminate\Database\Seeder;
 
 class HariSeeder extends Seeder
@@ -13,6 +14,13 @@ class HariSeeder extends Seeder
      */
     public function run()
     {
-        //
+        foreach([
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+        ] as $item)
+        Hari::create(['nama'=>$item]);
     }
 }

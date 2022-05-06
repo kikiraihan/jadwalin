@@ -39,4 +39,15 @@ class jurusan extends Model
         }
         return $return;
     }
+
+    public function getNamaSingkatAttribute()
+    {
+        $singkat=explode(" ",$this->nama);
+        $return="";
+        foreach($singkat as $s){
+            $return=$return.substr($s,0,1);
+        }
+
+        return $return;
+    }
 }

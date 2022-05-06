@@ -19,7 +19,7 @@ class DosenImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
 
     public function __construct()
     {
-        $this->semuaJurusan=jurusan::semuaNama();
+        // $this->semuaJurusan=jurusan::semuaId();
     }
     
 
@@ -28,7 +28,7 @@ class DosenImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
         return new Dosen([
             'nama' => $row['nama'],
             'nip' => $row['nip'],
-            'jurusan' => $row['jurusan'],
+            'bidang_studi' => $row['bidang_studi'],
         ]);
     }
 
@@ -44,9 +44,10 @@ class DosenImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
                 'numeric',
                 'unique:dosens,nip',
             ],
-            'jurusan' => [
+            'bidang_studi' => [
                 'required',
-                Rule::in($this->semuaJurusan),
+                'string',
+                // Rule::in($this->semuaJurusan),
             ],
         ];
     }

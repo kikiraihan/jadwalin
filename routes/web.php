@@ -3,6 +3,9 @@
 
 use App\Http\Controllers\ImportDosenController;
 use App\Http\Controllers\ImportMahasiswaController;
+use App\Http\Livewire\HariAdd;
+use App\Http\Livewire\HariEdit;
+use App\Http\Livewire\HariIndex;
 use App\Http\Livewire\JurusanAdd;
 use App\Http\Livewire\JurusanEdit;
 use App\Http\Livewire\JurusanIndex;
@@ -11,6 +14,16 @@ use App\Http\Livewire\MatakuliahAdd;
 use App\Http\Livewire\MatakuliahEdit;
 use App\Http\Livewire\MatakuliahIndex;
 use App\Http\Livewire\Pembimbingan;
+use App\Http\Livewire\PengampuAdd;
+use App\Http\Livewire\PengampuIndex;
+use App\Http\Livewire\RuanganAdd;
+use App\Http\Livewire\RuanganEdit;
+use App\Http\Livewire\RuanganIndex;
+use App\Http\Livewire\SlotJadwalAdd;
+use App\Http\Livewire\SlotJadwalIndex;
+use App\Http\Livewire\SlotJamAdd;
+use App\Http\Livewire\SlotJamEdit;
+use App\Http\Livewire\SlotJamIndex;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,6 +56,18 @@ Route::group(['middleware' => 'auth'], function ($route) {
         $admin->get('matakuliah', MatakuliahIndex::class)->name('matakuliah');
         $admin->get('matakuliah/add', MatakuliahAdd::class)->name('matakuliah.add');
         $admin->get('matakuliah/{id}/edit', MatakuliahEdit::class)->name('matakuliah.edit');
+        $admin->get('ruangan', RuanganIndex::class)->name('ruangan');
+        $admin->get('ruangan/add', RuanganAdd::class)->name('ruangan.add');
+        $admin->get('ruangan/{id}/edit', RuanganEdit::class)->name('ruangan.edit');
+        $admin->get('hari', HariIndex::class)->name('hari');
+        $admin->get('hari/add', HariAdd::class)->name('hari.add');
+        $admin->get('pengampu', PengampuIndex::class)->name('pengampu');
+        $admin->get('pengampu/add', PengampuAdd::class)->name('pengampu.add');
+        $admin->get('slotjam', SlotJamIndex::class)->name('slotjam');
+        $admin->get('slotjam/add', SlotJamAdd::class)->name('slotjam.add');
+        $admin->get('slotjam/{id}/edit', SlotJamEdit::class)->name('slotjam.edit');
+        $admin->get('penjadwalan', SlotJadwalIndex::class)->name('slotjadwal');
+        $admin->get('penjadwalan/{id_slot_jam}/add', SlotJadwalAdd::class)->name('slotjadwal.add');
     });
 
 

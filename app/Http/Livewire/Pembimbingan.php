@@ -106,7 +106,7 @@ class Pembimbingan extends Component
         $d=Dosen::find($idDosen);
         $d->nama=$value['nama'];
         $d->nip=$value['nip'];
-        $d->jurusan=$value['jurusan'];
+        $d->bidang_studi=$value['bidang_studi'];
         $d->save();
     }
 

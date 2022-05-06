@@ -40,7 +40,7 @@
             </div>
             <div class="text-left col-span-1 pr-2">
                 <x-atom.form-select-standar wire:model="filterIdJurusan">
-                    <option value="" hidden selected>...</option>
+                    <option value="" selected>Semua Jurusan</option>
                     @foreach ($jurusan as $item)
                         <option class="w-full capitalize" value='{{$item->id}}'>
                             {{$item->nama}}

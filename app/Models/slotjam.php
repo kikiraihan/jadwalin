@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class slotjam extends Model
         'id_hari',
         'awal',
         'akhir',
+        'sks',
     ];
 
     public function hari()
@@ -28,5 +30,19 @@ class slotjam extends Model
             'id_slotjam',
             'id_dosen',
         );
+    }
+
+    public function slotJadwal(){
+        return $this->hasMany(slotjadwal::class,'id_slot_jam','id');
+    }
+
+    public function getAwalAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i');
+    }
+
+    public function getAkhirAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i');
     }
 }

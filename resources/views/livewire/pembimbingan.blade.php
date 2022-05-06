@@ -57,8 +57,8 @@
                 preConfirm: () => {
                     const nama = Swal.getPopup().querySelector('#nama').value
                     const nip = Swal.getPopup().querySelector('#nip').value
-                    const jurusan = Swal.getPopup().querySelector('#jurusan').value
-                    return { nama: nama, nip: nip, jurusan: jurusan  }
+                    const bidang_studi = Swal.getPopup().querySelector('#bidang_studi').value
+                    return { nama: nama, nip: nip, bidang_studi: bidang_studi  }
                 }
             }).then((result)=>{
                 if(result.isConfirmed)
@@ -137,7 +137,7 @@
                         </div>
                     </td>
                     <td class="py-3 px-6 text-right space-y-1 capitalize">
-                        {{$item->jurusan}}
+                        {{$item->bidang_studi}}
                     </td>
                     <td class="flex py-3 px-6 justify-center whitespace-nowrap gap-2">
                         {{$item->jumlah_bimbingan}}

@@ -15,11 +15,11 @@ class CreateSlotjadwalsTable extends Migration
     {
         Schema::create('slotjadwals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_slot_jam')->constrained('slotjams')->onDelete('cascade');//FK
-            $table->foreignId('id_jurusan')->constrained('jurusans')->onDelete('cascade');//FK
-            $table->foreignId('id_ruangan')->constrained('ruangans')->onDelete('cascade');//FK
-            $table->foreignId('id_pengampu')->constrained('pengampus')->onDelete('cascade');//FK
-            $table->enum('kelas',['A','B','C','D','E']);
+            $table->foreignId('id_slot_jam')->constrained('slotjams')->onDelete('cascade')->onDelete('cascade');//FK
+            $table->foreignId('id_ruangan')->constrained('ruangans')->onDelete('cascade')->onDelete('cascade');//FK
+            $table->foreignId('id_pengampu')->constrained('pengampus')->onDelete('cascade')->onDelete('cascade');//FK
+            // $table->foreignId('id_jurusan')->constrained('jurusans')->onDelete('cascade');//FK
+            // $table->enum('kelas',['A','B','C','D','E']);
             $table->timestamps();
         });
     }

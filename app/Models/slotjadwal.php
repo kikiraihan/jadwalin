@@ -11,20 +11,15 @@ class slotjadwal extends Model
 
     protected $fillable=[
         'id_slot_jam',
-        'id_jurusan',
         'id_ruangan',
         'id_pengampu',
-        'kelas',
+        // 'id_jurusan',
+        // 'kelas',
     ];
 
     public function slotjam()
     {
         return $this->belongsTo(slotjam::class,'id_slot_jam');
-    }
-
-    public function jurusan()
-    {
-        return $this->belongsTo(jurusan::class,'id_jurusan');
     }
 
     public function ruangan()
@@ -36,4 +31,9 @@ class slotjadwal extends Model
     {
         return $this->belongsTo(pengampu::class,'id_pengampu');
     }
+
+    // public function jurusan()
+    // {
+    //     return $this->belongsTo(jurusan::class,'id_jurusan');
+    // }
 }

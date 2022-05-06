@@ -8,20 +8,16 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="shortcut icon" href="{{ asset('grid-3x3.svg') }}" />
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <!-- Fonts dan Icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">{{-- google icon --}}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">{{-- font --}}
+        <link rel="stylesheet" href="{{ asset('fontawesome/all.min.css') }}">{{-- fontawesome --}}
 
         <!-- Styles -->
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
         <!-- Tailwind -->
         <script src="https://cdn.tailwindcss.com"></script>
-        
 
-
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <style>
             body.swal2-shown > [aria-hidden="true"] {
@@ -55,6 +51,14 @@
     </body>
 
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>{{-- alpine --}}
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+    {{-- font awesome --}}
+    {{-- <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script> --}}
+    
     {{$scripthalaman}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

@@ -17,7 +17,7 @@
 <div class="w-full overflow-x-hidden border-t flex flex-col container mx-auto bg-gray-100 mb-28">
     <main class="w-full flex-grow p-6">
 
-        <h1 class="text-3xl text-black pb-4">Edit Event</h1>
+        <h1 class="text-3xl text-black pb-4">Edit Jurusan</h1>
         <section class="w-full">
             
             <div class="bg-white overflow-auto mb-6 py-3 px-6 rounded">
