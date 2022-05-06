@@ -29,6 +29,11 @@
                         @if ($dipilihMatakuliah)
                             <div class="bg-blue-200 text-md px-3 py-2 rounded">
                                 <span>{{$dipilihMatakuliah->nama}}</span>
+                                <div class="space-x-2">
+                                    <sup> semester {{$dipilihMatakuliah->semester}}</sup>
+                                    <sup> Jurusan {{$dipilihMatakuliah->jurusan->namaSingkat}}</sup>
+                                    <sup> {{$dipilihMatakuliah->sks}} sks</sup>
+                                </div>
                             </div>
                         @endif
                     </div> 
@@ -47,9 +52,16 @@
                                 @foreach ($mk as $m)
                                 <li class="py-3 space-x-3 flex">
                                     <div wire:click="pilihMatakuliah({{json_encode($m->id)}})" 
-                                        class="bg-blue-200  px-3 py-1 rounded cursor-pointer hover:bg-blue-300 shadow">
-                                        <i class="fas fa-angle-right text-xs pr-1"></i>
-                                        <span>{{$m->nama}}</span>
+                                        class="bg-blue-200 px-2 py-1 rounded cursor-pointer hover:bg-blue-300 shadow flex items-center space-x-2">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span>
+                                            <div>{{$m->nama}}</div>
+                                            <div class="space-x-2">
+                                                <sup> semester {{$m->semester}}</sup>
+                                                <sup> Jurusan {{$m->jurusan->namaSingkat}}</sup>
+                                                <sup> {{$m->sks}} sks</sup>
+                                            </div>
+                                        </span>
                                     </div>
                                 </li>     
                                 @endforeach

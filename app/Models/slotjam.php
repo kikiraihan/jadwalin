@@ -17,6 +17,7 @@ class slotjam extends Model
         'sks',
     ];
 
+    // parent
     public function hari()
     {
         return $this->belongsTo(Hari::class,'id_hari','id');
@@ -32,10 +33,13 @@ class slotjam extends Model
         );
     }
 
+    // child
     public function slotJadwal(){
         return $this->hasMany(slotjadwal::class,'id_slot_jam','id');
     }
 
+
+    // atribute
     public function getAwalAttribute($value)
     {
         return Carbon::parse($value)->format('H:i');

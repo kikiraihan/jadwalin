@@ -27,11 +27,11 @@
                         <h4 class="font-normal text-80">Slot Jam</h4>
                     </div> 
                     <div class="w-3/4 py-4 break-words">
-                        <div>
+                        <div class="capitalize">
                             {{$slotJam->hari->nama}}
                         </div>
                         <div>
-                            {{$slotJam->awal}}-{{$slotJam->akhir}}
+                            {{$slotJam->awal}}-{{$slotJam->akhir}} <span class="text-xs text-amber-600">({{$slotJam->sks}} SKS)</span>
                         </div>
                         <x-atom.form-error-input :kolom="'id_slot_jam'" />
                     </div>
@@ -41,13 +41,20 @@
                     <div class="w-1/4 py-4">
                         <h4 class="font-normal text-80">Pengampu :</h4>
                         @if ($dipilihPengampu)
-                            <div class="bg-blue-200 text-md px-3 py-2 rounded">
+                            <div class="bg-slate-50 text-md px-3 py-2 rounded">
                                 <div class="inline-flex flex-col">
-                                    <span class="text-xs mt-2">Dosen : </span>
+                                    <span class="text-xs mt-2 text-gray-500">Matakuliah : </span>
+                                    <div>
+                                        <span>{{$dipilihPengampu->matakuliah->nama}}</span>
+                                        <div class="space-x-2">
+                                            <sup> semester {{$dipilihPengampu->matakuliah->semester}}</sup>
+                                            <sup> Jurusan {{$dipilihPengampu->matakuliah->jurusan->namaSingkat}}</sup>
+                                            <sup class="text-amber-600"> {{$dipilihPengampu->matakuliah->sks}} sks</sup>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs mt-2 text-gray-500">Dosen : </span>
                                     <span>{{$dipilihPengampu->dosen->nama}}</span>
-                                    <span class="text-xs mt-2">Matakuliah : </span>
-                                    <span>{{$dipilihPengampu->matakuliah->nama}}</span>
-                                    <span class="text-xs mt-2">Kelas : </span>
+                                    <span class="text-xs mt-2 text-gray-500">Kelas : </span>
                                     <span>{{$dipilihPengampu->kelas}}</span>
                                 </div>
                                 
@@ -69,12 +76,23 @@
                                 @foreach ($peng as $pe)
                                 <li class="py-3 space-x-3 flex">
                                     <div wire:click="pilihPengampu({{json_encode($pe->id)}})" 
-                                        class="bg-sky-200  px-3 py-1 rounded cursor-pointer hover:bg-sky-300 shadow">
-                                        <i class="fas fa-chalkboard-teacher text-sm pr-1"></i>
-                                        <div class="inline-flex divide-x-2 divide-sky-100 space-x-2">
-                                            <span class="pl-2">{{$pe->dosen->nama}}</span>
-                                            <span class="pl-2">{{$pe->matakuliah->nama}}</span>
-                                            <span class="pl-2">{{$pe->kelas}}</span>
+                                        class="bg-slate-200  px-3 py-1 rounded cursor-pointer hover:bg-sky-100 shadow">
+                                        <div class="inline-flex space-x-2">
+                                            <span>
+                                                <div>{{$pe->matakuliah->nama}}</div>
+                                                <div class="space-x-2">
+                                                    <sup> semester {{$pe->matakuliah->semester}}</sup>
+                                                    <sup> Jurusan {{$pe->matakuliah->jurusan->namaSingkat}}</sup>
+                                                    <sup class="text-amber-600"> {{$pe->matakuliah->sks}} sks</sup>
+                                                </div>
+                                            </span>
+                                            <span class="pl-2">
+                                                <div>
+                                                    <i class="fas fa-chalkboard-teacher text-sm pr-1"></i>
+                                                    {{$pe->dosen->nama}}
+                                                </div>
+                                                <sup>Kelas : {{$pe->kelas}}</sup>
+                                            </span>
                                         </div>
                                     </div>
                                 </li>     

@@ -62,12 +62,13 @@
                     @foreach ($item as $jam)
                         <div class="bg-slate-50 rounded shadow">
                             <div class="text-xs flex justify-between ">
-                                <span class="bg-slate-200 p-1 rounded-br-md shadow-sm">{{$jam->awal}} - {{$jam->akhir}}</span> <span class="p-1">{{$jam->sks}} SKS</span>
+                                <span class="bg-slate-200 p-1 rounded-br-md shadow-sm">{{$jam->awal}} - {{$jam->akhir}}</span> 
+                                <span class="bg-amber-100 p-1 rounded-bl-md shadow-sm">{{$jam->sks}} SKS</span>
                             </div>
                             <div class="mb-3 py-2">
                                 @forelse ($jam->slotJadwal as $jad)
                                 <div class="py-1 px-2 border-b-2 border-zinc-100 bg-white">
-                                    <div class="text-sm font-semibold">
+                                    <div class="text-sm font-semibold flex">
                                         <span>{{$jad->pengampu->matakuliah->nama}}</span>
                                         <span>
                                             <x-atom.button-table-only-faicon icon="fas fa-xmark" warna="pink" class="ml-2 px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusJadwal',{{$jad->id}})"/>
@@ -87,9 +88,11 @@
                                                 {{$jad->pengampu->matakuliah->jurusan->namaSingkat}} 
                                             </span>
                                             <span class="text-xs">
+                                                {{-- <sup>sem </sup>  --}}
                                                 {{$jad->pengampu->matakuliah->semester}} 
                                             </span>
                                             <span class="text-xs">
+                                                {{-- <sup>kls </sup>  --}}
                                                 {{$jad->pengampu->kelas}}
                                             </span>
                                         </div>

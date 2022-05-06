@@ -76,7 +76,7 @@ class PengampuAdd extends Component
     public function render()
     {
         $do=Dosen::where('nama', 'like', '%'.$this->searchDosen.'%');
-        $mk=matakuliah::where('nama', 'like', '%'.$this->searchMatakuliah.'%');
+        $mk=matakuliah::with('jurusan')->where('nama', 'like', '%'.$this->searchMatakuliah.'%');
 
         return view('livewire.pengampu-add',[
             'do' => $do->paginate(5),

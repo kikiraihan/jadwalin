@@ -6,6 +6,13 @@ use App\Models\Pengampu;
 use App\Models\Ruangan;
 use App\Models\slotjadwal;
 use App\Models\slotjam;
+use App\Rules\jadwal_cekdosen;
+use App\Rules\jadwal_cekdosen_selisih_jam;
+use App\Rules\jadwal_cekjurusan;
+use App\Rules\jadwal_cekjurusan_selisih_jam;
+use App\Rules\jadwal_cekruangan;
+use App\Rules\jadwal_cekruangan_selisih_jam;
+use App\Rules\jadwal_ceksks;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -32,10 +39,17 @@ class SlotJadwalAdd extends Component
             'id_ruangan'   =>[
                 'required',
                 'integer',
+                new jadwal_cekruangan,
+                new jadwal_cekruangan_selisih_jam
             ],
             'id_pengampu'   =>[
                 'required',
                 'integer',
+                new jadwal_cekjurusan,
+                new jadwal_cekjurusan_selisih_jam,
+                new jadwal_cekdosen,
+                new jadwal_cekdosen_selisih_jam,
+                new jadwal_ceksks
             ],
         ];
     }
@@ -46,15 +60,6 @@ class SlotJadwalAdd extends Component
         $this->id_slot_jam=$id_slot_jam;
         $this->id_ruangan=null;
         $this->id_pengampu=null;
-    }
-    
-    public function pilihRuangan($id)
-    {
-        $this->id_ruangan = $id;
-    }
-    public function pilihPengampu($id)
-    {
-        $this->id_pengampu = $id;
     }
 
     public function save()
@@ -72,7 +77,8 @@ class SlotJadwalAdd extends Component
     public function render()
     {
         $ru=Ruangan::where('nama', 'like', '%'.$this->search_ruangan.'%');
-        $peng=Pengampu::doesntHave('slotJadwal')
+        $peng=Pengampu::with(['matakuliah.jurusan','dosen'])
+        ->doesntHave('slotJadwal')
         ->where(function ($query) {
             $query->whereHas('matakuliah', function ($query) {
                 $query->where('nama', 'like', '%'.$this->search_pengampu.'%');
@@ -88,5 +94,15 @@ class SlotJadwalAdd extends Component
             'dipilihPengampu'=> $this->id_pengampu?Pengampu::find($this->id_pengampu):null,
             'slotJam'=>slotjam::with('hari')->find($this->id_slot_jam),
         ]);
+    }
+
+
+    public function pilihRuangan($id)
+    {
+        $this->id_ruangan = $id;
+    }
+    public function pilihPengampu($id)
+    {
+        $this->id_pengampu = $id;
     }
 }
