@@ -13,11 +13,13 @@ class MatakuliahIndex extends Component
 
     protected $listeners=[
         'FixHapusMatakuliah'=>'hapus',
+        'FixHapusSemuaMatakuliah'=>'hapusSemua',
     ];
 
     // untuk pencarian
     public $search;
     public $filterIdJurusan;
+    public $filterSemester;
 
     public function render()
     {
@@ -25,6 +27,7 @@ class MatakuliahIndex extends Component
         ->where('nama', 'like', '%'.$this->search.'%')
         ;
         if($this->filterIdJurusan) $d->where('id_jurusan',  $this->filterIdJurusan);
+        if($this->filterSemester) $d->where('semester',  $this->filterSemester);
 
         return view('livewire.matakuliah-index',[
             'isiTabel'=>$d->paginate(30),
@@ -35,6 +38,14 @@ class MatakuliahIndex extends Component
     public function hapus($id)
     {
         matakuliah::find($id)->delete();
+        $this->emit('swalDeleted');
+    }
+
+    public function hapusSemua()
+    {
+        foreach (matakuliah::all() as $key => $value) {
+            $value->delete();
+        };
         $this->emit('swalDeleted');
     }
 }

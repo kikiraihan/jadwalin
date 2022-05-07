@@ -87,14 +87,13 @@
                                     Berisi NIM mahasiswa.
                                 </li>
                                 <li>
-                                    <b>JURUSAN</b>,<br>
-                                    <span>Jurusan yang tersedia adalah berikut:</span>
+                                    <b>ID JURUSAN</b>,<br>
+                                    <span>Diisi dengan id Jurusan yang tersedia, misalnya sebagai berikut</span>
                                     <div class="grid md:grid-cols-2 text-xs">
                                     @foreach ($jurusan as $item)
-                                        <span>({{$item->id}}) {{$item->nama}}</span>
+                                        <span>{{$item->nama}} (id: {{$item->id}})</span>
                                     @endforeach
                                     </div>
-                                    <div class="inline-block mt-3 bg-blue-200 p-2 text-sm">(Harap diisi sesuai teks dibawah ini, yaitu dengan huruf besar disetiap awal kata)</div>
                                 </li>
                             </ul>
                         </div>

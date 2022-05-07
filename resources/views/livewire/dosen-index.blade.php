@@ -14,38 +14,27 @@
     @include('layouts.scriptsweetalert')
 
     <script>
-        window.livewire.on('swalInputBimbingan', (idDosen) => {
-            
-            const { value: fruit } = Swal.fire({
-                title: 'Tambah Bimbingan',
-                text:"Masukan NIM Mahasiswa : ",
-                input: 'text',
-                inputPlaceholder: '...',
-                showCancelButton: true,
-                inputValidator: (value) => {
-                    return new Promise((resolve) => {
-                        // console.log(value)
-                        window.livewire.emit('terkonfirmasiInputBimbingan',value, idDosen);
-                        resolve()
-                    })
-                }
-                
-            })
-            
-        })
-    
-    
-        window.livewire.on('swalRemoveBimbingan', (isi) => {
+        
+        window.livewire.on('swalEditDosen', (judul,isi,idDosen) => {
             
             const { value: formValues } = Swal.fire({
-                title: 'Remove Bimbingan',
-                html: '<div class="px-2">'+isi+'</div>',
+                title: judul,
+                html: '<div class="px-1 pb-2">'+isi+'</div>',
                 focusConfirm: false,
-                preConfirm: () => {}
+                showCancelButton: true,
+                preConfirm: () => {
+                    const nama = Swal.getPopup().querySelector('#nama').value
+                    const nip = Swal.getPopup().querySelector('#nip').value
+                    const bidang_studi = Swal.getPopup().querySelector('#bidang_studi').value
+                    return { nama: nama, nip: nip, bidang_studi: bidang_studi  }
+                }
+            }).then((result)=>{
+                if(result.isConfirmed)
+                    window.livewire.emit('terkonfirmasiEditDosen',result.value, idDosen);
+                    resolve()
             })
             
         })
-
     </script>
 </x-slot>
 
@@ -55,9 +44,9 @@
     <div class="flex justify-between items-center mt-6">
         <div>
             <div class="f-playfair font-bold text-2xl capitalize">
-                Dosen Pembimbing
+                Dosen
             </div>
-            <span class="text-sm">Data dosen pembimbing</span>
+            <span class="text-sm">Data dosen</span>
         </div>
         <div wire:loading.delay.long>
             <x-atom.loading_fullpage-spin  />
@@ -74,6 +63,11 @@
                 <x-atom.form-input-standar placeholder="Search" type="text" wire:model.debounce.500="search" id="search" class="w-full rounded p-2" />
             </div>
             <div class="flex justify-end px-2">
+                <x-atom.link-table-with-faicon icon="fas fa-file-arrow-up" 
+                    warna="emerald" class="p-2" 
+                    href="{{ route('import.dosen') }}">
+                    <span class="text-sm">Import Excell</span>
+                </x-atom.link-table-with-faicon>
             </div>
         </div>
         
@@ -86,7 +80,7 @@
                     <th class="py-3 px-6 text-left">No</th>
                     <th class="py-3 px-6 text-left">Nama</th>
                     <th class="py-3 px-6 text-right">Bidang Studi</th>
-                    <th class="py-3 px-6 text-center">Jumlah Bimbingan</th>
+                    <th class="py-3 px-6 text-center">Actions</th>
                 </tr>
             </thead>
             @else
@@ -111,29 +105,29 @@
                     <td class="py-3 px-6 text-right space-y-1 capitalize">
                         {{$item->bidang_studi}}
                     </td>
-                    <td class="flex py-3 px-6 justify-center whitespace-nowrap gap-2">
-                        {{$item->jumlah_bimbingan}}
-
+                    
+                    <td class="py-3 px-6 text-center">
                         <div class="flex item-center justify-center space-x-7">
                             <x-molecul.dropdown-tabel :title="'Opsi'">
 
-                                <x-molecul.dropdown-tabel-item class="cursor-pointer" wire:click="inputBimbingan({{$item->id}})">
-                                    <div class="flex items-center space-x-2 text-green-300">
+                                <x-molecul.dropdown-tabel-item class="cursor-pointer" wire:click="editDosen({{$item->id}})">
+                                    <div class="flex items-center space-x-2 text-yellow-500">
                                         <span class="material-icons">
-                                            person_add
+                                            edit
                                         </span>
-                                        <span>Tambah</span>
+                                        <span>Edit</span>
                                     </div>
                                 </x-molecul.dropdown-tabel-item>
 
-                                <x-molecul.dropdown-tabel-item class="cursor-pointer" wire:click="removeBimbingan({{$item->id}})">
+                                <x-molecul.dropdown-tabel-item class="cursor-pointer" wire:click="$emit('swalToDeletedWithMessage','terkonfirmasiHapusDosen',{{$item->id}},'anda akan menghapus dosen ini')">
                                     <div class="flex items-center space-x-2 text-red-500">
                                         <span class="material-icons">
-                                            person_remove
+                                            delete
                                         </span>
                                         <span>Hapus</span>
                                     </div>
                                 </x-molecul.dropdown-tabel-item>
+
                             </x-molecul.dropdown-tabel>
 
                         </div>

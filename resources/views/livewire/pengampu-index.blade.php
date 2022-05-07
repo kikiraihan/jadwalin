@@ -49,10 +49,13 @@
                 </x-atom.form-select-standar>
             </div>
 
-            <div class="text-right col-span-1 pr-2">
+            <div class="text-right col-span-1 pr-2 space-x-2">
                 <x-atom.link-table-only-faicon icon="fas fa-plus" 
                     warna="emerald" class="px-2 py-1" 
                     href="{{ route('pengampu.add') }}"/>
+                <x-atom.button-table-with-faicon icon="fas fa-trash" warna="red" class="px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusSemuaPengampu')">
+                        <span class="font-semibold text-xs">Hapus Semua</span>
+                    </x-atom.button-table-with-faicon>
             </div>
         </div>
         
@@ -66,6 +69,7 @@
                     <th class="py-3 px-4 text-left">Matakuliah</th>
                     <th class="py-3 px-4 text-left">Kode MK</th>
                     <th class="py-3 px-4 text-left">Jurusan</th>
+                    <th class="py-3 px-4 text-center">SKS</th>
                     <th class="py-3 px-4 text-left">Tim Dosen</th>
                     <th class="py-3 px-4 text-center">Kelas</th>
                     <th class="py-3 px-4 text-left">Terjadwal</th>
@@ -106,6 +110,13 @@
                             {{$item->matakuliah->jurusan->nama}}
                         @elseif($key!=0 and $isiTabel[$key]->matakuliah->id!=$isiTabel[$key-1]->matakuliah->id)
                             {{$item->matakuliah->jurusan->nama}}
+                        @endif
+                    </td>
+                    <td class="py-3 px-4 text-center whitespace-nowrap">
+                        @if ($key==0)
+                            {{$item->matakuliah->sks}}
+                        @elseif($key!=0 and $isiTabel[$key]->matakuliah->id!=$isiTabel[$key-1]->matakuliah->id)
+                            {{$item->matakuliah->sks}}
                         @endif
                     </td>
 

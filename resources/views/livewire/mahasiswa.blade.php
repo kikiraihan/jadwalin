@@ -74,12 +74,11 @@
                 </x-atom.form-select-standar>
             </div>
             <div class="text-right col-span-1 pr-2">
-                <a class="space-x-2 item-center f-roboto bg-green-500 shadow-sm text-white  inline-flex p-2 rounded cursor-pointer   hover:shadow-md  hover:bg-green-600" href="{{route('import.mahasiswa')}}">
-                    <span class="material-icons">
-                        group_add
-                    </span>
-                    <span>Import Data Baru</span>
-                </a>
+                <x-atom.link-table-with-faicon icon="fas fa-file-arrow-up" 
+                    warna="emerald" class="p-2" 
+                    href="{{ route('import.mahasiswa') }}">
+                    <span class="text-sm">Import Excell</span>
+                </x-atom.link-table-with-faicon>
             </div>
         </div>
         

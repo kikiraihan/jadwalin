@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\slotJadwalExport;
 use App\Models\Hari;
 use App\Models\slotjadwal;
 use Livewire\Component;
 use App\Models\slotjam;
+use Carbon\Carbon;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SlotJadwalIndex extends Component
 {   
@@ -14,6 +17,7 @@ class SlotJadwalIndex extends Component
 
     protected $listeners=[
         'FixHapusJadwal'=>'hapusJadwal',
+        'FixHapusSemuaJadwal'=>'hapusSemuaJadwal',
         'FixGenerateJadwal'=>'generateJadwal',
     ];
 
@@ -42,8 +46,24 @@ class SlotJadwalIndex extends Component
         $this->emit('swalDeleted');
     }
 
+    public function hapusSemuaJadwal()
+    {
+        foreach (slotjadwal::all() as $value) {
+            $value->delete();
+        };
+        $this->emit('swalDeleted');
+    }
+
+
     public function generateJadwal()
     {
         //
+    }
+
+    public function downloadExcell() 
+    {
+        $waktu=Carbon::now();
+
+        return Excel::download(new slotJadwalExport($this->filterIdHari), 'jadwal_export_'.$waktu->format('Y_M_d').'.xlsx');
     }
 }

@@ -15,6 +15,7 @@ class PengampuIndex extends Component
     protected $listeners=[
         'FixHapusPengampu'=>'hapus',
         'FixHapusJadwal'=>'hapusJadwal',
+        'FixHapusSemuaPengampu'=>'hapusSemuaPengampu',
     ];
 
     // untuk pencarian
@@ -47,6 +48,13 @@ class PengampuIndex extends Component
     public function hapus($id)
     {
         Pengampu::find($id)->delete();
+        $this->emit('swalDeleted');
+    }
+    public function hapusSemuaPengampu()
+    {
+        foreach (Pengampu::all() as $value) {
+            $value->delete();
+        };
         $this->emit('swalDeleted');
     }
 

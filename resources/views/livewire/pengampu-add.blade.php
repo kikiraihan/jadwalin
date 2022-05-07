@@ -27,12 +27,13 @@
                     <div class="w-1/4 py-4">
                         <h4 class="font-normal text-80">Matakuliah :</h4>
                         @if ($dipilihMatakuliah)
-                            <div class="bg-blue-200 text-md px-3 py-2 rounded">
-                                <span>{{$dipilihMatakuliah->nama}}</span>
-                                <div class="space-x-2">
-                                    <sup> semester {{$dipilihMatakuliah->semester}}</sup>
-                                    <sup> Jurusan {{$dipilihMatakuliah->jurusan->namaSingkat}}</sup>
-                                    <sup> {{$dipilihMatakuliah->sks}} sks</sup>
+                            <div class="bg-blue-200 text-md px-3 py-2 rounded space-y-2">
+                                <div>{{$dipilihMatakuliah->nama}}</div>
+                                <div class="space-x-2 flex text-xs">
+                                    <span> {{$dipilihMatakuliah->kode_mk}}</span>
+                                    <span> Semester {{$dipilihMatakuliah->semester}}</span>
+                                    <span class="text-lime-700"> Jurusan {{$dipilihMatakuliah->jurusan->namaSingkat}}</span>
+                                    <span> {{$dipilihMatakuliah->sks}} sks</span>
                                 </div>
                             </div>
                         @endif
@@ -55,10 +56,10 @@
                                         class="bg-blue-200 px-2 py-1 rounded cursor-pointer hover:bg-blue-300 shadow flex items-center space-x-2">
                                         <i class="fas fa-angle-right"></i>
                                         <span>
-                                            <div>{{$m->nama}}</div>
+                                            <div>{{$m->nama}}({{$m->jurusan->namaSingkat}})</div>
                                             <div class="space-x-2">
                                                 <sup> semester {{$m->semester}}</sup>
-                                                <sup> Jurusan {{$m->jurusan->namaSingkat}}</sup>
+                                                <sup class="text-lime-700"> Jurusan {{$m->jurusan->namaSingkat}}</sup>
                                                 <sup> {{$m->sks}} sks</sup>
                                             </div>
                                         </span>

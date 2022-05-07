@@ -38,7 +38,7 @@
                 </button>
                 <x-atom.form-input-standar placeholder="Search" type="text" wire:model.debounce.500ms="search" class="w-full rounded p-2" />
             </div>
-            <div class="text-left col-span-1 pr-2">
+            <div class="text-left col-span-1 pr-2 flex space-x-1">
                 <x-atom.form-select-standar wire:model="filterIdJurusan">
                     <option value="" selected>Semua Jurusan</option>
                     @foreach ($jurusan as $item)
@@ -47,12 +47,26 @@
                         </option>
                     @endforeach
                 </x-atom.form-select-standar>
+                <x-atom.form-select-standar wire:model="filterSemester">
+                    <option value="" selected>Semua Semester</option>
+                    @for ($i = 1; $i <= 8; $i++)
+                    <option class="w-full capitalize" value='{{$i}}'>Semester {{$i}}</option>
+                    @endfor
+                </x-atom.form-select-standar>
             </div>
 
-            <div class="text-right col-span-1 pr-2">
+            <div class="text-right col-span-1 pr-2 space-x-2">
                 <x-atom.link-table-only-faicon icon="fas fa-plus" 
                     warna="emerald" class="px-2 py-1" 
                     href="{{ route('matakuliah.add') }}"/>
+                <x-atom.link-table-with-faicon icon="fas fa-file-arrow-up" 
+                    warna="emerald" class="px-2 py-1" 
+                    href="{{ route('import.matakuliah') }}">
+                    Import Excell
+                </x-atom.link-table-with-faicon>
+                <x-atom.button-table-with-faicon icon="fas fa-trash" warna="red" class="px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusSemuaMatakuliah')">
+                    <span class="font-semibold text-xs">Hapus Semua</span>
+                </x-atom.button-table-with-faicon>
             </div>
         </div>
         

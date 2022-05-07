@@ -23,7 +23,7 @@
                 Penjadwalan
             </div>
             <span class="text-sm">
-                Pengaturan slot jadwal berdasarkan slot jam yang tersedia.
+                Pengaturan slot jadwal kuliah berdasarkan slot jam yang tersedia.
             </span>
         </div>
         <div wire:loading.delay.long>
@@ -45,9 +45,17 @@
                 </x-atom.form-select-standar>
             </div>
 
-            <div class="col-span-3 pr-2 py-2 flex justify-end space-x-2">
-                <x-atom.button-table-with-faicon icon="fas fa-recycle" warna="blue" class="px-2 py-1 float-right" wire:click="$emit('swalAndaYakinCeklis','FixGenerateJadwal','Anda akan me reset slot jam ke pengaturan default (rekomendasi), anda yakin?')">
+            <div class="col-span-3 pr-2 py-2 flex justify-end space-x-4">
+                <x-atom.button-table-with-faicon icon="fas fa-recycle" warna="blue" class="px-2 py-1 float-right" wire:click="$emit('swalAndaYakinCeklis','FixGenerateJadwal','Anda akan menghapus semua slot jadwal lama dan menggenerate jadwal baru, anda yakin?')">
                     <span class="font-semibold text-sm">Generate Jadwal</span>
+                </x-atom.button-table-with-faicon>
+
+                <x-atom.button-table-with-faicon icon="fas fa-file-excel" warna="green" class="px-2 py-1 float-right" wire:click="downloadExcell">
+                    <span class="font-semibold text-sm">Download Excell</span>
+                </x-atom.button-table-with-faicon>
+
+                <x-atom.button-table-with-faicon icon="fas fa-trash" warna="red" class="px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusSemuaJadwal')">
+                    <span class="font-semibold text-xs">Hapus Semua</span>
                 </x-atom.button-table-with-faicon>
             </div>
         </div>
@@ -68,7 +76,7 @@
                             <div class="mb-3 py-2">
                                 @forelse ($jam->slotJadwal as $jad)
                                 <div class="py-1 px-2 border-b-2 border-zinc-100 bg-white">
-                                    <div class="text-sm font-semibold flex">
+                                    <div class="text-sm font-semibold flex justify-between">
                                         <span>{{$jad->pengampu->matakuliah->nama}}</span>
                                         <span>
                                             <x-atom.button-table-only-faicon icon="fas fa-xmark" warna="pink" class="ml-2 px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusJadwal',{{$jad->id}})"/>

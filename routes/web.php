@@ -3,8 +3,9 @@
 
 use App\Http\Controllers\ImportDosenController;
 use App\Http\Controllers\ImportMahasiswaController;
+use App\Http\Controllers\ImportMatakuliahController;
+use App\Http\Livewire\DosenIndex;
 use App\Http\Livewire\HariAdd;
-use App\Http\Livewire\HariEdit;
 use App\Http\Livewire\HariIndex;
 use App\Http\Livewire\JurusanAdd;
 use App\Http\Livewire\JurusanEdit;
@@ -42,13 +43,16 @@ Route::group(['middleware' => 'auth'], function ($route) {
     })->name('dashboard');
 
     $route->group(['prefix' => 'admin'], function ($admin) {
-        $admin->get('dosen', Pembimbingan::class)->name('pembimbingan');
+        $admin->get('pembimbing', Pembimbingan::class)->name('pembimbingan');
+        $admin->get('dosen', DosenIndex::class)->name('dosen');
         $admin->get('mahasiswa', Mahasiswa::class)->name('mahasiswa');
         
         $admin->get('dosen/import', [ImportDosenController::class,'index'])->name('import.dosen');
         $admin->post('dosen/import/store', [ImportDosenController::class,'store'])->name('import.dosen.store');
         $admin->get('mahasiswa/import', [ImportMahasiswaController::class,'index'])->name('import.mahasiswa');
         $admin->post('mahasiswa/import/store', [ImportMahasiswaController::class,'store'])->name('import.mahasiswa.store');
+        $admin->get('matakuliah/import', [ImportMatakuliahController::class,'index'])->name('import.matakuliah');
+        $admin->post('matakuliah/import/store', [ImportMatakuliahController::class,'store'])->name('import.matakuliah.store');
         
         $admin->get('jurusan', JurusanIndex::class)->name('jurusan');
         $admin->get('jurusan/add', JurusanAdd::class)->name('jurusan.add');

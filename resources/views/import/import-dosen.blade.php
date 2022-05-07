@@ -87,14 +87,8 @@
                                     Berisi NIP dosen.
                                 </li>
                                 <li>
-                                    <b>JURUSAN</b>,<br>
-                                    <span>Jurusan yang tersedia adalah berikut:</span>
-                                    <div class="grid md:grid-cols-2 text-xs">
-                                    @foreach ($jurusan as $item)
-                                        <span>({{$item->id}}) {{$item->nama}}</span>
-                                    @endforeach
-                                    </div>
-                                    <div class="inline-block mt-3 bg-blue-200 p-2 text-sm">(Harap diisi sesuai teks dibawah ini, yaitu dengan huruf besar disetiap awal kata)</div>
+                                    <b>BIDANG STUDI</b>,<br>
+                                    <span>Bidang studi dari dosen</span>
                                 </li>
                             </ul>
                         </div>

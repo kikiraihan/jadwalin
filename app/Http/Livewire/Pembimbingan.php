@@ -14,8 +14,6 @@ class Pembimbingan extends Component
     protected $listeners=[
         'terkonfirmasiInputBimbingan'=>'fixInputBimbingan',
         'terkonfirmasiRemoveBimbingan'=>'fixRemoveBimbingan',
-        'terkonfirmasiHapusDosen'=>'fixRemoveDosen',
-        'terkonfirmasiEditDosen'=>'fixEditDosen',
     ];
 
     // untuk pencarian
@@ -88,30 +86,4 @@ class Pembimbingan extends Component
         $this->emit('swalUpdated');
     }
 
-
-    public function editDosen($idDosen)
-    {
-        $d=Dosen::find($idDosen);
-
-        $isi = view('swalForm.editDosen', [
-            'dosen'=>$d,
-            'idDosen'=>$idDosen,
-            ])->render();
-        
-        $this->emit('swalEditDosen','Edit Dosen',$isi, $idDosen);
-    }
-
-    public function fixEditDosen($value, $idDosen)
-    {
-        $d=Dosen::find($idDosen);
-        $d->nama=$value['nama'];
-        $d->nip=$value['nip'];
-        $d->bidang_studi=$value['bidang_studi'];
-        $d->save();
-    }
-
-    public function fixRemoveDosen($idDosen)
-    {
-        Dosen::find($idDosen)->delete();
-    }
 }
