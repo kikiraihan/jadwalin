@@ -14,6 +14,7 @@ class DosenIndex extends Component
     protected $listeners=[
         'terkonfirmasiHapusDosen'=>'fixRemoveDosen',
         'terkonfirmasiEditDosen'=>'fixEditDosen',
+        'FixHapusSemuaDosen'=>'hapusSemua',
     ];
 
     // untuk pencarian
@@ -53,5 +54,13 @@ class DosenIndex extends Component
     public function fixRemoveDosen($idDosen)
     {
         Dosen::find($idDosen)->delete();
+    }
+
+    public function hapusSemua()
+    {
+        foreach (Dosen::all() as $value) {
+            $value->delete();
+        };
+        $this->emit('swalDeleted');
     }
 }

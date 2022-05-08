@@ -22,7 +22,7 @@
                     Import Dosen Baru
                 </div>
 
-                <x-atom.button-with-google-icon href="{{ route('pembimbingan') }}" :icon="'arrow_back'"
+                <x-atom.button-with-google-icon href="{{ route('dosen') }}" :icon="'arrow_back'"
                     class="hover:text-blue-700">
                     <span class="d-none d-md-inline">Kembali</span>
                 </x-atom.button-with-google-icon>

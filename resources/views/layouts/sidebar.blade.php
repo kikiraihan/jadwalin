@@ -54,12 +54,12 @@
             '',
             'master',
             ['route' => 'dosen', 'title' => 'Dosen','icon'=>'fas fa-user-graduate fa-fw'],
-            ['route' => 'mahasiswa', 'title' => 'Mahasiswa','icon'=>'fa fa-users fa-fw'],
+            ['route' => 'mahasiswa', 'title' => 'Mahasiswa','icon'=>'fa fa-user-group fa-fw'],
             ['route' => 'matakuliah', 'title' => 'Matakuliah','icon'=>'fa fa-box fa-fw text-xs'],
-            ['route' => 'jurusan', 'title' => 'Jurusan','icon'=>'fa fa-box fa-fw text-xs'],
             ['route' => 'ruangan', 'title' => 'Ruangan','icon'=>'fa fa-box fa-fw text-xs'],
             ['route' => 'hari', 'title' => 'Hari','icon'=>'fa fa-box fa-fw text-xs'],
             ['route' => 'slotjam', 'title' => 'Slot Jam','icon'=>'fa fa-box fa-fw text-xs'],
+            ['route' => 'jurusan', 'title' => 'Jurusan','icon'=>'fa fa-box fa-fw text-xs'],
         ] as $item)
         @if (is_string($item))
         <li class="my-2">

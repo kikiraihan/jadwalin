@@ -36,16 +36,16 @@ class slotJadwalExport implements FromQuery, WithMapping, WithHeadings
     {
         return [
             // '#',
-            'Jurusan',
-            'Nama Matakuliah',
-            'Kode Matakuliah',
-            'Semester',
-            'Kelas',
-            'Hari',
-            'Jam awal',
-            'Jam akhir',
-            'Ruangan',
-            'Dosen',
+            'JURUSAN',
+            'NAMA MATAKULIAH',
+            'KODE MATAKULIAH',
+            'SEMESTER',
+            'KELAS',
+            'HARI',
+            'JAM AWAL',
+            'JAM AKHIR',
+            'RUANGAN',
+            'DOSEN',
         ];
     }
 

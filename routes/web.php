@@ -16,6 +16,7 @@ use App\Http\Livewire\MatakuliahEdit;
 use App\Http\Livewire\MatakuliahIndex;
 use App\Http\Livewire\Pembimbingan;
 use App\Http\Livewire\PengampuAdd;
+use App\Http\Livewire\PengampuImport;
 use App\Http\Livewire\PengampuIndex;
 use App\Http\Livewire\RuanganAdd;
 use App\Http\Livewire\RuanganEdit;
@@ -67,6 +68,7 @@ Route::group(['middleware' => 'auth'], function ($route) {
         $admin->get('hari/add', HariAdd::class)->name('hari.add');
         $admin->get('pengampu', PengampuIndex::class)->name('pengampu');
         $admin->get('pengampu/add', PengampuAdd::class)->name('pengampu.add');
+        $admin->get('pengampu/import', PengampuImport::class)->name('pengampu.import');
         $admin->get('slotjam', SlotJamIndex::class)->name('slotjam');
         $admin->get('slotjam/add', SlotJamAdd::class)->name('slotjam.add');
         $admin->get('slotjam/{id}/edit', SlotJamEdit::class)->name('slotjam.edit');

@@ -20,6 +20,7 @@ class HariSeeder extends Seeder
             'Rabu',
             'Kamis',
             'Jumat',
+            // 'Sabtu',
         ] as $item)
         Hari::create(['nama'=>$item]);
     }

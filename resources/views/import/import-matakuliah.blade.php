@@ -69,7 +69,7 @@
                     <div class="space-y-2 col-span-2">
                         <div class="text-left">
                             <label class="f-roboto ml-1 text-gray-500 text-sm block">Template</label>
-                            <x-atom.button-with-google-icon href="{{ asset('_keperluan_import/matakuliah_import_.xlsx') }}" :icon="'download'" class="bg-gray-100 shadow-sm text-gray-500  inline-flex p-2 rounded cursor-pointer   hover:shadow-md  hover:text-gray-600">
+                            <x-atom.button-with-google-icon href="{{ asset('_keperluan_import/matakuliah_import_2.xlsx') }}" :icon="'download'" class="bg-gray-100 shadow-sm text-gray-500  inline-flex p-2 rounded cursor-pointer   hover:shadow-md  hover:text-gray-600">
                                 template_matakuliah.xlsx
                             </x-atom.button-with-google-icon>
                         </div>

@@ -62,12 +62,16 @@
                 </button>
                 <x-atom.form-input-standar placeholder="Search" type="text" wire:model.debounce.500="search" id="search" class="w-full rounded p-2" />
             </div>
-            <div class="flex justify-end px-2">
+            <div class="flex justify-end px-2 space-x-2">
                 <x-atom.link-table-with-faicon icon="fas fa-file-arrow-up" 
                     warna="emerald" class="p-2" 
                     href="{{ route('import.dosen') }}">
                     <span class="text-sm">Import Excell</span>
                 </x-atom.link-table-with-faicon>
+
+                <x-atom.button-table-with-faicon icon="fas fa-trash" warna="red" class="px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusSemuaDosen')">
+                    <span class="font-semibold text-xs">Hapus Semua</span>
+                </x-atom.button-table-with-faicon>
             </div>
         </div>
         

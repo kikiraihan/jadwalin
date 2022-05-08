@@ -46,11 +46,11 @@
             </div>
 
             <div class="col-span-3 pr-2 py-2 flex justify-end space-x-4">
-                <x-atom.button-table-with-faicon icon="fas fa-recycle" warna="blue" class="px-2 py-1 float-right" wire:click="$emit('swalAndaYakinCeklis','FixGenerateJadwal','Anda akan menghapus semua slot jadwal lama dan menggenerate jadwal baru, anda yakin?')">
+                <x-atom.button-table-with-faicon icon="fas fa-gear" warna="blue" class="px-2 py-1 float-right" wire:click="$emit('swalAndaYakinCeklis','FixGenerateJadwal','Anda akan menghapus semua slot jadwal lama dan menggenerate jadwal baru, anda yakin?')">
                     <span class="font-semibold text-sm">Generate Jadwal</span>
                 </x-atom.button-table-with-faicon>
 
-                <x-atom.button-table-with-faicon icon="fas fa-file-excel" warna="green" class="px-2 py-1 float-right" wire:click="downloadExcell">
+                <x-atom.button-table-with-faicon icon="fas fa-file-download" warna="blue" class="px-2 py-1 float-right" wire:click="downloadExcell">
                     <span class="font-semibold text-sm">Download Excell</span>
                 </x-atom.button-table-with-faicon>
 

@@ -50,12 +50,13 @@
             </div>
 
             <div class="text-right col-span-1 pr-2 space-x-2">
-                <x-atom.link-table-only-faicon icon="fas fa-plus" 
-                    warna="emerald" class="px-2 py-1" 
-                    href="{{ route('pengampu.add') }}"/>
+                <x-atom.link-table-only-faicon icon="fas fa-plus" warna="emerald" class="px-2 py-1" href="{{ route('pengampu.add') }}"/>
+                <x-atom.link-table-with-faicon icon="fas fa-file-arrow-up" warna="emerald" class="px-2 py-1" href="{{ route('pengampu.import') }}">
+                    Import Excel
+                </x-atom.link-table-with-faicon>
                 <x-atom.button-table-with-faicon icon="fas fa-trash" warna="red" class="px-2 py-1 float-right" wire:click="$emit('swalToDeleted','FixHapusSemuaPengampu')">
-                        <span class="font-semibold text-xs">Hapus Semua</span>
-                    </x-atom.button-table-with-faicon>
+                    <span class="font-semibold text-xs">Hapus Semua</span>
+                </x-atom.button-table-with-faicon>
             </div>
         </div>
         
